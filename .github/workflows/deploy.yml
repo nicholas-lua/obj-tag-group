@@ -33,17 +33,13 @@ jobs:
       - name: Install JupyterLite
         run: |
           python -m pip install --upgrade pip
-          pip install jupyterlite-core jupyterlite-xeus-python
-
-      - name: Create Content Directory
-        run: |
-          mkdir -p lite_content
-          cp demo.ipynb lite_content/
-          if [ -d "obj_tag_group" ]; then cp -r obj_tag_group lite_content/; fi
+          # jupyterlab is required to index the contents flag properly
+          pip install jupyterlite-core jupyterlite-xeus-python jupyterlab
 
       - name: Build JupyterLite Site
         run: |
-          jupyter lite build --contents lite_content --output-dir _output
+          # This builds everything in your repo root directly into the site
+          jupyter lite build --contents . --output-dir _output
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3

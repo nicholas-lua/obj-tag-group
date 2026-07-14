@@ -1,6 +1,6 @@
 [project]
 name = "obj_tag_group"
-version = "0.2.0"
+version = "1.0.0"
 description = "A flexible, searchable registry that allows you to attach text tags to almost any Python object."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -10,6 +10,11 @@ classifiers = [
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/obj_tag_group"]

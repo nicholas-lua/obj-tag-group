@@ -1,6 +1,6 @@
 [project]
 name = "obj_tag_group"
-version = "1.0.0"
+version = "1.0.1"
 description = "A flexible, searchable registry that allows you to attach text tags to almost any Python object."
 readme = "README.md"
 requires-python = ">=3.8"

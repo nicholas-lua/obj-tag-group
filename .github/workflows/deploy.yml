@@ -36,21 +36,15 @@ jobs:
           # jupyterlab is required to index the contents flag properly
           pip install jupyterlite-core jupyterlite-xeus-python jupyterlab
 
-      - name: Force Environment Configuration
+      - name: Show versions
         run: |
-          # Write an environment file dynamically so xeus-python is forced to use the new mirror
-          cat << EOF > environment.yml
-          channels:
-            - https://prefix.dev/emscripten-forge
-            - https://prefix.dev/conda-forge
-          dependencies:
-            - xeus-python
-          EOF
-
+          python -c "import jupyterlite_core; print('jupyterlite-core:', jupyterlite_core.__version__)"
+          python -c "import jupyterlite_xeus_python; print('jupyterlite-xeus-python:', jupyterlite_xeus_python.__version__)"
+          
       - name: Build JupyterLite Site
         run: |
           # The --environment flag forces the builder to use your root environment.yml
-          jupyter lite build --contents . --environment environment.yml --output-dir _output
+          jupyter lite build --contents . --output-dir _output
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3

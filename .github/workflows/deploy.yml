@@ -49,8 +49,8 @@ jobs:
 
       - name: Build JupyterLite Site
         run: |
-          # This builds everything in your repo root directly into the site
-          jupyter lite build --contents . --output-dir _output
+          # The --environment flag forces the builder to use your root environment.yml
+          jupyter lite build --contents . --environment environment.yml --output-dir _output
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
